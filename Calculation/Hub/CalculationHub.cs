@@ -1,14 +1,23 @@
+using Calculation.Calculations.Commands;
 using Calculation.Domain;
 using Calculation.Hub.Client;
+using MediatR;
 using Microsoft.AspNetCore.SignalR;
 
 namespace Calculation.Hub;
 
 public class CalculationHub : Hub<ICalculationClient>, ICalculationHub
 {
-    public Task CalculateEquations(CalculationList calculationList)
+    private readonly IMediator _mediator;
+
+    public CalculationHub(IMediator mediator)
     {
-        throw new NotImplementedException();
+        _mediator = mediator;
+    }
+
+    public async Task CalculateEquations(CalculateEquationsCommand command)
+    {
+        await _mediator.Send(command);
     }
 
     public Task<List<CalculationResult>> GetHistory()
