@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Calculations\Commands\" />
       <Folder Include="Calculations\Models\" />
       <Folder Include="Calculations\Queries\" />
     </ItemGroup>

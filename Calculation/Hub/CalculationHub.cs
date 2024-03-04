@@ -1,4 +1,3 @@
-using Calculation.Calculations.Commands;
 using Calculation.Domain;
 using Calculation.Hub.Client;
 using MediatR;
@@ -15,10 +14,10 @@ public class CalculationHub : Hub<ICalculationClient>, ICalculationHub
         _mediator = mediator;
     }
 
-    public async Task CalculateEquations(CalculateEquationsCommand command)
-    {
-        await _mediator.Send(command);
-    }
+    // public async Task CalculateEquations(CalculateEquationsCommand command)
+    // {
+    //     await _mediator.Send(command);
+    // }
 
     public Task<List<CalculationResult>> GetHistory()
     {

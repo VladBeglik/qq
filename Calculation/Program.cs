@@ -1,5 +1,6 @@
 using Calculation.Hub;
 using Calculation.Services;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<ICalculationService, CalculationService>();
-builder.Services.AddScoped<ICalculationHub, CalculationHub>();
+builder.Services.AddTransient<ICalculationService, CalculationService>();
+builder.Services.AddTransient<ICalculationHub, CalculationHub>();
 
 var app = builder.Build();
 
@@ -37,7 +38,7 @@ app.UseCors(builder => builder
     .AllowAnyHeader()
     .AllowAnyMethod()
     .AllowCredentials());
-app.MapHub<CalculationHub>("/hub");
+//app.MapHub<CalculationHub>("/hub");
 app.Run();
 
 
