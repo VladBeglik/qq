@@ -15,8 +15,8 @@ public class CalculateController : ControllerBase
     }
 
     [HttpPost]
-    [Route("/Calculate")]
-    public async Task<IDictionary<int, CalculationResult>> GetCalculation(CalculationList r)
+    [Route("/calculate")]
+    public async Task<IDictionary<int, CalculationResult>> GetCalculation([FromBody] CalculationList r)
     {
         var res = _calculationService.Calculate(r);
         return res;
