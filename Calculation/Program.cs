@@ -35,9 +35,10 @@ app.MapControllers();
 
 app.UseHttpsRedirection();
 app.UseCors(builder => builder
+    .AllowAnyOrigin()
     .AllowAnyHeader()
     .AllowAnyMethod()
-    .AllowCredentials());
+);
 //app.MapHub<CalculationHub>("/hub");
 app.Run();
 
